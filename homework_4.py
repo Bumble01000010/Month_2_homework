@@ -61,5 +61,3 @@ if len(lib) > 5:
     print("Библиотека большая (более 5 книг)")
 else:
     print("Библиотека маленькая")
-
-# testing some pushing

@@ -54,5 +54,3 @@ passenger_2.addmoney(10)
 passenger_2.pay_for_trip()
 passenger_2.pay_for_trip()
 passenger_2.get_balance()
-
-# testing some pushing
