@@ -76,3 +76,5 @@ person_10 = Best_friends('Draco Malfoy', 1960, "Wizard", True, "slytherin ", "Be
 print(person_10.introduce_1())
 print(person_9.introduce_1())
 print(person_10.introduce_memory())
+
+# testing some pushing
