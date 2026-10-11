@@ -51,13 +51,18 @@ class Library:
     def __contains__(self, item):
         return item in self.books
 
+    def __bool__(self):
+        if len(self.books) > 5:
+            return True
+        else:
+            return False
 lib = Library("Бишкек", books=["Война и мир", "1984", "Мастер и Маргарита"])
 print(lib)
 print(len(lib))
 print("1984" in lib)
-print("Гарри Поттер" in lib )
+print("Гарри Поттер" in lib)
 
-if len(lib) > 5:
+if bool(lib):
     print("Библиотека большая (более 5 книг)")
 else:
     print("Библиотека маленькая")
