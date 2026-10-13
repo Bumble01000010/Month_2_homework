@@ -1,18 +1,17 @@
-class A_Team:
+class Person:
     def __init__(self, name, birth_date, occupation, higher_education):
         self.name = name
         self.birth_date = birth_date
         self.occupation = occupation
         self.higher_education = higher_education
 
-    def introduce_1(self):
-        ED_retun_value = lambda x: "this man does have higher education" if self.higher_education else "this man doesn't have higher education"
-        return 'Name: {}, date of birth {}, skills: {}, {}.'.format(self.name, self.birth_date, self.occupation, ED_retun_value(self.higher_education))
+    def introduce(self):
+        return f'Name: {self.name}, date of birth { self.birth_date}, skills: {self.occupation}, this man {'does' if self.higher_education else 'does not'} have a higher education.'
 
-person_1 = A_Team('John "Hannibal" Smith', '01.10.1928', "Team leader, master tactician, and master of disguise", True)
-person_2 = A_Team('Templeton Arthur "Faceman" Peck', '01.03.1945', "Con artist, smooth talker, and procurement expert", True)
-person_3 = A_Team('H.M. (Howling Mad) Murdock', "24.11.1947", "Pilot extraordinaire; capable of flying almost any aircraft", True)
-person_4 = A_Team('Bosco Albert "B.A." (Bad Attitude) Baracus', '21.05.1952', " Mechanic genius, heavy muscle and a driver ", False)
+person_1 = Person('John "Hannibal" Smith', '01.10.1928', "Team leader, master tactician, and master of disguise", True)
+person_2 = Person('Templeton Arthur "Faceman" Peck', '01.03.1945', "Con artist, smooth talker, and procurement expert", True)
+person_3 = Person('H.M. (Howling Mad) Murdock', "24.11.1947", "Pilot extraordinaire; capable of flying almost any aircraft", True)
+person_4 = Person('Bosco Albert "B.A." (Bad Attitude) Baracus', '21.05.1952', " Mechanic genius, heavy muscle and a driver ", False)
 
 # print(person_1.introduce_1())
 # print(person_2.introduce_1())
@@ -20,59 +19,56 @@ person_4 = A_Team('Bosco Albert "B.A." (Bad Attitude) Baracus', '21.05.1952', " 
 # print(person_4.introduce_1())
 
 
-
-class Classmate(A_Team):
+class Classmate(Person):
     def __init__(self, name, birth_date, occupation, higher_education, school_class):
         super().__init__(name, birth_date, occupation, higher_education)
         self.group_name = school_class
 
-    def introduce_1(self):
+    def introduce(self):
         return f"my name is {self.name} and have studied in {self.group_name} class back in the day"
 
-    def is_classmate_whith_person_5(self):
-        return f'My name is {self.name} and {"i am" if self.group_name == person_5.group_name else "i am not"} classmate of {person_5.name}'
 
-class Friends(Classmate):
-    def __init__(self, name, birth_date, occupation, higher_education, school_class, hobby):
-        super().__init__(name, birth_date, occupation, higher_education, school_class)
+class Friend(Person):
+    def __init__(self, name, birth_date, occupation, higher_education, hobby):
+        super().__init__(name, birth_date, occupation, higher_education)
         self.hobby = hobby
 
-    def is_friend_whith_person_7(self):
-        return f'{person_7.name} is {"a" if self.hobby == person_7.hobby else "not a"} friend of {person_7.name}'
-
+    def introduce(self):
+        return f'{self.name} is friends with anyone who does {self.hobby}'
 
 
 person_5 = Classmate("Joe", 1997, "doctor", True, "B" )
 person_6 = Classmate("Duch", 2001, "baker", False, "A" )
-person_7 = Friends("Mina", 1994, "concept artis", True, "B", "Work out" )
-person_8 = Friends("Rene", 1995, "mathematic ", True, "c",  "singing")
+person_7 = Friend("Mina", 1994, "concept artis", True, "work out")
+person_8 = Friend("Rene", 1995, "mathematician ", True, "singing")
 
-print(person_5.introduce_1())
-print(person_6.is_classmate_whith_person_5())
+print(person_5.introduce())
+print(person_6.introduce())
 
-print(person_7.introduce_1())
-print(person_8.is_friend_whith_person_7())
+print(person_7.introduce())
+print(person_8.introduce())
+
 
 
 #________________________________________________________ Дополнительное задание 1 ____________________________
 people_list = [person_5, person_6, person_7, person_8]
 
 for i in people_list:
-    print(i.introduce_1())
+    print(i.introduce())
 
 #________________________________________________________ Дополнительное задание 2 ____________________________
 
-class Best_friends(Friends):
-    def __init__(self, name, birth_date, occupation, higher_education, school_class, hobby, shared_memory ):
-        super().__init__(name, birth_date, occupation, higher_education, school_class, hobby)
+class BestFriends(Friend):
+    def __init__(self, name, birth_date, occupation, higher_education, hobby, shared_memory ):
+        super().__init__(name, birth_date, occupation, higher_education, hobby)
         self.shared_memory = shared_memory
 
-    def introduce_memory(self):
-        return f'{self.name} and {person_9.name} share the wonderful memory of {self.shared_memory}'
+    def introduce(self):
+        parent_data = super().introduce()
+        return(f'{parent_data}\n{self.name} shares the memory of {self.shared_memory} with alot of people')
 
-person_9 = Best_friends('Ivan Drago', 1957, 'Boxer', True, "A", "Training", 'bringing the glorious victory to soviet union')
-person_10 = Best_friends('Draco Malfoy', 1960, "Wizard", True, "slytherin ", "Being annoying",  'bringing the glorious victory to soviet union')
+person_9 = BestFriends('Ivan Drago', 1957, 'Boxer', True, "Training", 'bringing the glorious victory to soviet union')
+person_10 = BestFriends('Draco Malfoy', 1960, "Wizard", True, "Being annoying", 'bringing the glorious victory to soviet union')
 
-print(person_10.introduce_1())
-print(person_9.introduce_1())
-print(person_10.introduce_memory())
+print(person_10.introduce())
+print(person_9.introduce())
