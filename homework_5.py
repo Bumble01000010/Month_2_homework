@@ -7,15 +7,15 @@ class Car(Vehicle):
         super().start()
         print('Car starting')
 
-class ElectricCar(Car):
+class ElectricCar(Vehicle):
     def ready(self):
         super().start()
-        print('Electric car ready')
+        print('Electric car starting')
 
-class Tesla(ElectricCar, Car):
+class Tesla(Car, ElectricCar):
     def start(self):
         super().start()
-        print('Tesla starting')
+        print('Tesla ready')
 
 model_Y = Tesla()
 model_Y.start()
