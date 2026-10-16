@@ -1,8 +1,13 @@
 SECRET_PASSWORD = "kitty_2007"
 
 def password_guard(func):
-    pass
+    def wrapper():
 
+        func()
+    return wrapper
+
+
+@password_guard
 def open_vault(password, money):
     print("Сейф открыт!")
     return f"Забирайте {money} сом"
