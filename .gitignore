@@ -1,4 +1,6 @@
 .venv
 .idea
+.testDir/
 
 homework_7/database.db
+homework_8/database.db
